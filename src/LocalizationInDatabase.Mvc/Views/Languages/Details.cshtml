@@ -1,0 +1,699 @@
+﻿@using System.Globalization
+@model LanguageViewModel
+@{
+    var cultureInfo = new CultureInfo(Model.Culture);
+    ViewData["Title"] = @Localize["Languages.Details.Title", arguments: cultureInfo.DisplayName];
+}
+
+<h3 class="mb-3">@Localize["Languages.Details.Heading", arguments: cultureInfo.DisplayName]</h3>
+<div class="accordion py-3" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="cultureInfo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                Culture Info
+            </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="cultureInfo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                    <div class="col-sm-4 fw-semibold">
+                        Name
+                    </div>
+                    <div class="col-sm-8">
+                        @cultureInfo.Name
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        DisplayName
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DisplayName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NativeName
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NativeName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        EnglishName
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.EnglishName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        IetfLanguageTag
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.IetfLanguageTag
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        IsNeutralCulture
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.IsNeutralCulture
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        KeyboardLayoutId
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.KeyboardLayoutId
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        LCID
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.LCID
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        Parent
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.Parent
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        ThreeLetterISOLanguageName
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.ThreeLetterISOLanguageName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        ThreeLetterWindowsLanguageName
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.ThreeLetterWindowsLanguageName
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="textInfo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Text Info
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="textInfo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                    <div class="col-sm-4 fw-semibold">
+                        ANSICodePage
+                    </div>
+                    <div class="col-sm-8">
+                        @cultureInfo.TextInfo.ANSICodePage
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        OEMCodePage
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.TextInfo.OEMCodePage
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        MacCodePage
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.TextInfo.MacCodePage
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        EBCDICCodePage
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.TextInfo.EBCDICCodePage
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        LCID
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.TextInfo.LCID
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        CultureName
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.TextInfo.CultureName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        IsReadOnly
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.TextInfo.IsReadOnly
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        ListSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.TextInfo.ListSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        IsRightToLeft
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.TextInfo.IsRightToLeft
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="numberFormat">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Number Format
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="numberFormat" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                    <div class="col-sm-4 fw-semibold">
+                        CurrencyDecimalDigits
+                    </div>
+                    <div class="col-sm-8">
+                        @cultureInfo.NumberFormat.CurrencyDecimalDigits
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        CurrencyDecimalSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.CurrencyDecimalSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        CurrencyGroupSizes
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.NumberFormat.CurrencyGroupSizes)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NumberGroupSizes
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.NumberFormat.NumberGroupSizes)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PercentGroupSizes
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.NumberFormat.PercentGroupSizes)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        CurrencyGroupSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.CurrencyGroupSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        CurrencySymbol
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.CurrencySymbol
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NaNSymbol
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.NaNSymbol
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        CurrencyNegativePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.CurrencyNegativePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NumberNegativePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.NumberNegativePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PercentPositivePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PercentPositivePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PercentNegativePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PercentNegativePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NegativeInfinitySymbol
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.NegativeInfinitySymbol
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NegativeSign
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.NegativeSign
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NumberDecimalDigits
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.NumberDecimalDigits
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NumberDecimalSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.NumberDecimalSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NumberGroupSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.NumberGroupSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        CurrencyPositivePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.CurrencyPositivePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PositiveInfinitySymbol
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PositiveInfinitySymbol
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PositiveSign
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PositiveSign
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PercentDecimalDigits
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PercentDecimalDigits
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PercentDecimalSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PercentDecimalSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PercentGroupSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PercentGroupSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PercentSymbol
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PercentSymbol
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PerMilleSymbol
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.PerMilleSymbol
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NativeDigits
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.NumberFormat.NativeDigits)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        DigitSubstitution
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.NumberFormat.DigitSubstitution
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="dateTimeFormat">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                DateTime Format
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="dateTimeFormat" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                    <div class="col-sm-4 fw-semibold">
+                        AMDesignator
+                    </div>
+                    <div class="col-sm-8">
+                        @cultureInfo.DateTimeFormat.AMDesignator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        DateSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.DateSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        FirstDayOfWeek
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.FirstDayOfWeek
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        CalendarWeekRule
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.CalendarWeekRule
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        FullDateTimePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.FullDateTimePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        LongDatePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.LongDatePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        LongTimePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.LongTimePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        MonthDayPattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.MonthDayPattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        PMDesignator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.PMDesignator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        RFC1123Pattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.RFC1123Pattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        ShortDatePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.ShortDatePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        ShortTimePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.ShortTimePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        SortableDateTimePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.SortableDateTimePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        TimeSeparator
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.TimeSeparator
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        UniversalSortableDateTimePattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.UniversalSortableDateTimePattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        YearMonthPattern
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.YearMonthPattern
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        AbbreviatedDayNames
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.DateTimeFormat.AbbreviatedDayNames)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        ShortestDayNames
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.DateTimeFormat.ShortestDayNames)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        DayNames
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.DateTimeFormat.DayNames)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        AbbreviatedMonthNames
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.DateTimeFormat.AbbreviatedMonthNames)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        MonthNames
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.DateTimeFormat.MonthNames)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        NativeCalendarName
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.DateTimeFormat.NativeCalendarName
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        AbbreviatedMonthGenitiveNames
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.DateTimeFormat.AbbreviatedMonthGenitiveNames)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        MonthGenitiveNames
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.DateTimeFormat.MonthGenitiveNames)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="calendar">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                Calendar
+            </button>
+        </h2>
+        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="calendar" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        MinSupportedDateTime
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.Calendar.MinSupportedDateTime
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        MaxSupportedDateTime
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.Calendar.MaxSupportedDateTime
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        AlgorithmType
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.Calendar.AlgorithmType
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        Eras
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @string.Join(", ", cultureInfo.Calendar.Eras)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mt-3 fw-semibold">
+                        TwoDigitYearMax
+                    </div>
+                    <div class="col-sm-8 mt-3">
+                        @cultureInfo.Calendar.TwoDigitYearMax
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Submenu{
+    <div class="row py-3 align-items-center">
+        <div class="col-md-6 mb-2 mb-md-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" asp-controller="Home">@Localize["Breadcrumb.Home.Index"]</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-action="List">@Localize["Breadcrumb.Languages.List"]</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @Localize["Breadcrumb.Languages.Details", arguments: cultureInfo.DisplayName]
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-6 text-end">
+            <a class="btn btn-dark" asp-action="List" asp-controller="StringResources" asp-route-culture="@Model.Culture">@Localize["Submenu.StringResources.List.Button"]</a>
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path@Context.Request.QueryString">@Localize["Submenu.Languages.Edit.Button"]</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">@Localize["Submenu.Languages.Delete.Button"]</a>
+            <a class="btn btn-dark" asp-action="List" asp-route-culture="@Context.GetRouteValue("culture")">@Localize["Submenu.Languages.List.Button"]</a>
+        </div>
+    </div>
+}

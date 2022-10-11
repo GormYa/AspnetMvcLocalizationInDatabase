@@ -1,0 +1,45 @@
+﻿@model EmployeeViewModel
+@{
+    ViewData["Title"] = @Localize["Employees.Details.Title", arguments: Model.Name];
+}
+
+<h3 class="mb-3">@Localize["Employees.Details.Heading", arguments: Model.Name]</h3>
+<div class="row">
+    <div class="col-sm-2 fw-semibold">
+        @Html.DisplayNameFor(model => model.Id)
+    </div>
+    <div class="col-sm-10">
+        @Model.Id
+    </div>
+    <div class="col-sm-2 mt-3 fw-semibold">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="col-sm-10 mt-3">
+        @Model.Name
+    </div>
+</div>
+
+@section Submenu{
+    <div class="row py-3 align-items-center">
+        <div class="col-md-6 mb-2 mb-md-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" asp-controller="Home">@Localize["Breadcrumb.Home.Index"]</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-action="List">@Localize["Breadcrumb.Employees.List"]</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @Localize["Breadcrumb.Employees.Details", arguments: Model.Name]
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-6 text-end">
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path@Context.Request.QueryString">@Localize["Submenu.Employees.Edit.Button"]</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">@Localize["Submenu.Employees.Delete.Button"]</a>
+            <a class="btn btn-dark" asp-action="List">@Localize["Submenu.Employees.List.Button"]</a>
+        </div>
+    </div>
+}

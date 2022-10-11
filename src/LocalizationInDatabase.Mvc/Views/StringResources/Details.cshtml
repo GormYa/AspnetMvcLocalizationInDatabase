@@ -1,0 +1,63 @@
+﻿@using System.Globalization
+@model StringResourceViewModel
+@{
+    var cultureInfo = (CultureInfo)ViewBag.CultureInfo;
+    var language = (LanguageViewModel)ViewBag.Language;
+
+    ViewData["Title"] = @Localize["StringResources.Details.Title", arguments: Model.Name];
+}
+
+<h3 class="mb-3">@Localize["StringResources.Details.Heading", arguments: Model.Name]</h3>
+<div class="row">
+    <div class="col-sm-2 fw-semibold">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="col-sm-10">
+        @Model.Name
+    </div>
+    <div class="col-sm-2 mt-3 fw-semibold">
+        @Html.DisplayNameFor(model => model.Value)
+    </div>
+    <div class="col-sm-10 mt-3">
+        @Model.Value
+    </div>
+    <div class="col-sm-2 mt-3 fw-semibold">
+        @Html.DisplayNameFor(model => model.IsApproved)
+    </div>
+    <div class="col-sm-10 mt-3">
+        @Model.IsApproved
+    </div>
+</div>
+
+@section Submenu{
+    <div class="row py-3 align-items-center">
+        <div class="col-md-6 mb-2 mb-md-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" asp-controller="Home">@Localize["Breadcrumb.Home.Index"]</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <a asp-action="List" asp-controller="Languages">@Localize["Breadcrumb.Languages.List"]</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <a asp-action="Details" asp-controller="Languages" asp-route-id="@language.Id">
+                            @Localize["Breadcrumb.Languages.Details", arguments: cultureInfo.DisplayName]
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-action="List" asp-route-culture="@Context.GetRouteValue("culture")">@Localize["Breadcrumb.StringResources.List"]</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @Localize["Breadcrumb.StringResources.Details", arguments: Model.Name]
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-6 text-end">
+            <a class="btn btn-primary" asp-action="Edit" asp-route-culture="@Context.GetRouteValue("culture")" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path@Context.Request.QueryString">@Localize["Submenu.StringResources.Edit.Button"]</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-culture="@Context.GetRouteValue("culture")" asp-route-id="@Model.Id">@Localize["Submenu.StringResources.Delete.Button"]</a>
+            <a class="btn btn-dark" asp-action="List" asp-route-culture="@Context.GetRouteValue("culture")">@Localize["Submenu.StringResources.List.Button"]</a>
+        </div>
+    </div>
+}

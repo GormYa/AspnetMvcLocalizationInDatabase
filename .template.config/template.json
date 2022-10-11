@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "GormYa",
+    "classifications": [ "Windows", "Linux", "macOs", "Web" ],
+    "identity": "LocalizationInDatabase.Mvc",
+    "groupIdentity":"LocalizationInDatabase",
+    "name": "Localization In Database",
+    "shortName": "localizationInDatabase",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "sourceName": "LocalizationInDatabase",
+    "preferNameDirectory": true
+  }

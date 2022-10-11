@@ -1,0 +1,69 @@
+﻿@using System.Globalization
+@model IEnumerable<LanguageViewModel>
+@{
+    ViewData["Title"] = Localize["Languages.List.Title"];
+}
+
+<h3 class="mb-3">@Localize["Languages.List.Heading"]</h3>
+@if (Model.Count() == 0)
+{
+    <p>
+        @Localize["Languages.List.No_languages"]
+    </p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-light table-borderless table-striped align-middle mb-0">
+            <thead>
+                <tr>
+                    <th class="align-middle">
+                        @Localize["Languages.List.Th_name"]
+                    </th>
+                    <th class="align-middle">
+                        @Localize["Languages.List.Th_culture"]
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @CultureInfo.GetCultureInfo(item.Culture).DisplayName
+                        </td>
+                        <td>
+                            @item.Culture
+                        </td>
+                        <td class="text-end">
+                            <a asp-action="List" asp-controller="StringResources" asp-route-culture="@item.Culture">@Localize["Languages.List.StringResources.Link"]</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">@Localize["Languages.List.Details.Link"]</a> |
+                            <a asp-action="Edit" asp-route-id="@item.Id">@Localize["Languages.List.Edit.Link"]</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="link-danger">@Localize["Languages.List.Delete.Link"]</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+@section Submenu{
+    <div class="row py-3 align-items-center">
+        <div class="col-md-6 mb-2 mb-md-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" asp-controller="Home">@Localize["Breadcrumb.Home.Index"]</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @Localize["Breadcrumb.Languages.List"]
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-6 text-end">
+            <a asp-action="Create" class="btn btn-primary">@Localize["Submenu.Languages.Create.Button"]</a>
+        </div>
+    </div>
+}

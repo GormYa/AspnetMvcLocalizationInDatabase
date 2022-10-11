@@ -1,0 +1,15 @@
+﻿@{
+    var routeValues = Context.Request.RouteValues;
+    routeValues.TryGetValue("culture", out var culture);
+}
+<div class="row mt-3">
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-primary me-2" name="SubmitButton" disabled>
+            @Localize[routeValues, "Submit.Button"]
+        </button>
+        <button type="submit" class="btn btn-primary me-2" name="SubmitButton" value="redirect" disabled>
+            @Localize[routeValues, "Submit_and_return_list.Button"]
+        </button>
+        <a asp-action="List" asp-route-culture="@culture" class="link-dark">@Localize[routeValues, "Return_list.Link"]</a>
+    </div>
+</div>

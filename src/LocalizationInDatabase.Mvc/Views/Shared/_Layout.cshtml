@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="@Thread.CurrentThread.CurrentUICulture.Name">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Localization Example</title>
+    @if (Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
+    {
+        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.rtl.min.css">
+    }
+    else
+    {
+        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css">
+    }
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css">
+    @if (Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
+    {
+        <link rel="stylesheet" href="~/lib/select2-bootstrap-5-theme/select2-bootstrap-5-theme.rtl.min.css">
+    }
+    else
+    {
+        <link rel="stylesheet" href="~/lib/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css">
+    }
+    <link rel="stylesheet" href="~/css/layout.css">
+</head>
+<body class="min-vh-100 d-flex flex-column" dir="@(Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")">
+    <header class="bg-dark">
+        <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-dark">
+            <div class="container-fluid d-flex">
+                <a class="navbar-brand flex-grow-1 flex-md-grow-0" asp-action="Index" asp-controller="Home">UI L10n Example</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header-menu" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="header-menu" class="navbar-collapse collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Home">@Localize["Navbar.Home.Index.Link"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="List" asp-controller="Employees">@Localize["Navbar.Employees.List.Link"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="List" asp-controller="Languages">@Localize["Navbar.Languages.List.Link"]</a>
+                        </li>
+                        <li class="nav-item d-md-none">
+                            <form asp-action="ChangeLanguage" asp-route-returnUrl="@Context.Request.Path@Context.Request.QueryString" asp-controller="Languages" method="post">
+                                <select name="cultureCode" class="form-select" onchange="this.form.submit()">
+                                    @foreach (var culture in Localize.GetCultures())
+                                    {
+                                        @Html.Raw($"<option value=\"{culture.Name}\" {(Thread.CurrentThread.CurrentUICulture.Name.Equals(culture.Name) ? "selected" : "")}>{culture.NativeName}</option>")
+                                    }
+                                </select>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <form asp-action="ChangeLanguage" asp-route-returnUrl="@Context.Request.Path@Context.Request.QueryString" asp-controller="Languages" method="post">
+                    <select name="cultureCode" class="form-select d-none d-md-inline" onchange="this.form.submit()">
+                        @foreach (var culture in Localize.GetCultures())
+                        {
+                            @Html.Raw($"<option value=\"{culture.Name}\" {(Thread.CurrentThread.CurrentUICulture.Name.Equals(culture.Name) ? "selected" : "")}>{culture.NativeName}</option>")
+                        }
+                    </select>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        @await RenderSectionAsync("Submenu", required: false)
+    </div>
+    <main class="container-fluid flex-grow-1">
+        @RenderBody()
+    </main>
+    <footer class="container-fluid bg-dark text-light py-3 text-end">
+        <a href="https://github.com/GormYa/AspnetMvcLocalizationInDatabase" target="_blank">Github</a>
+    </footer>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

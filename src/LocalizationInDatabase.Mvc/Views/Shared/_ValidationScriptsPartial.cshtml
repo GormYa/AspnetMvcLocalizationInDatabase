@@ -1,0 +1,29 @@
+﻿<script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/lib/select2/js/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('select').select2({ theme: "bootstrap-5" });
+
+        function TrackDataChange() {
+            var changedData = $form.serialize();
+            if ($formData != changedData) {
+                $buttons.prop('disabled', false);
+            } else {
+                $buttons.prop('disabled', true);
+            }
+        }
+
+        if ($('[data-track="form"]').length) {
+            var $form = $('[data-track="form"]');
+            var $formData = $form.serialize();
+            var $buttons = $form.find('button[type="submit"]');
+
+            $buttons.prop('disabled', true);
+
+            $('input').on('change', TrackDataChange);
+            $('select').on('change', TrackDataChange);
+            $('input').on('keyup', TrackDataChange);
+        }
+    });
+</script>

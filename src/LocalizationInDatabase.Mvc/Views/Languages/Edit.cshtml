@@ -1,0 +1,61 @@
+﻿@using System.Globalization
+@model LanguageEditModel
+@{
+    var modelCulture = new CultureInfo(Model.Culture);
+
+    ViewData["Title"] = @Localize["Languages.Edit.Title", arguments: modelCulture.DisplayName];
+
+    var addedCultures = Localize.GetCultures();
+    var availableCultures = CultureInfo.GetCultures(CultureTypes.AllCultures)
+        .Where(c => (!c.Name.Equals(string.Empty) && !addedCultures.Contains(c)) || c.Name.Equals(Model.Culture))
+        .OrderBy(d => d.DisplayName);
+}
+
+<h3 class="mb-3">@Localize["Languages.Edit.Heading", arguments: modelCulture.DisplayName]</h3>
+<form method="post" data-track="form">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-floating">
+                <select name="Culture" class="form-select" aria-label="@Html.DisplayNameFor(model => model.Culture)">
+                    @foreach (var culture in availableCultures)
+                    {
+                        @Html.Raw($"<option value=\"{culture.Name}\" {(culture.Name.Equals(Model.Culture) ? "selected" : "")}>{culture.DisplayName} - {culture.Name}</option>")
+                    }
+                </select>
+                <label asp-for="Culture"></label>
+                <span asp-validation-for="Culture" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <partial name="_EditButtonsPartial" />
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+    @section Submenu{
+    <div class="row py-3 align-items-center">
+        <div class="col-md-6 mb-2 mb-md-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" asp-controller="Home">@Localize["Breadcrumb.Home.Index"]</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-action="List">@Localize["Breadcrumb.Languages.List"]</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-action="Details" asp-route-id="@Context.GetRouteValue("id")">@Localize["Breadcrumb.Languages.Details", arguments: modelCulture.DisplayName]</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @Localize["Breadcrumb.Languages.Edit"]
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-6 text-end">
+            <a asp-action="List" class="btn btn-dark">@Localize["Submenu.Languages.List.Button"]</a>
+        </div>
+    </div>
+}
