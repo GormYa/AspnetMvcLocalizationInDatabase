@@ -3,15 +3,15 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "bootstrap@5.3.1",
+      "library": "bootstrap@5.3.3",
       "destination": "wwwroot/lib/bootstrap/"
     },
     {
-      "library": "jquery@3.7.0",
+      "library": "jquery@3.7.1",
       "destination": "wwwroot/lib/jquery/"
     },
     {
-      "library": "jquery-validate@1.19.5",
+      "library": "jquery-validate@1.21.0",
       "destination": "wwwroot/lib/jquery-validate/"
     },
     {
@@ -19,7 +19,7 @@
       "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
     },
     {
-      "library": "bootstrap-icons@1.10.5",
+      "library": "bootstrap-icons@1.11.3",
       "destination": "wwwroot/lib/bootstrap-icons/"
     },
     {
